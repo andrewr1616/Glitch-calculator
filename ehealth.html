@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Family Glitch Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: aquamarine;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="number"] {
+        width: 200px;
+        padding: 5px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: blue;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      #result {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Family Glitch Caculator</h1>
+    <form id="insuranceForm">
+      <label for="yearlyIncome">Yearly Income:</label>
+      <input type="number" id="yearlyIncome" required />
+      <label for="employerCost">Employer Insurance Cost:</label>
+      <input type="number" id="employerCost" required />
+      <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+      document
+        .getElementById("insuranceForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          // Get input values
+          let yearlyIncome = parseFloat(
+            document.getElementById("yearlyIncome").value
+          );
+          let employerCost = parseFloat(
+            document.getElementById("employerCost").value
+          );
+
+          // Calculate results
+          let monthlyIncome = yearlyIncome / 12;
+          let monthlyEmployerCost = employerCost * 2;
+          let insurancePercentage = (employerCost / monthlyIncome) * 2 * 100;
+
+          // Display results
+          document.getElementById("result").innerHTML =
+            "Monthly Income: $" +
+            monthlyIncome +
+            "<br>Monthly Employer Insurance Cost: $" +
+            monthlyEmployerCost +
+            "<br>Employer Insurance Cost to yearly income: " +
+            insurancePercentage +
+            "%";
+        });
+    </script>
+  </body>
+</html>
